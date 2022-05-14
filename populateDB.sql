@@ -6,7 +6,7 @@ insert into developers (firstName, secondName, age, sex) values
 ("Kamil", "Nowak", 28, "male")
 ;
 
-insert into skills values 
+insert into skills(id_developer, java, c_plus_plus, c_sharp, js, levelOfPosition) values 
 (1, true, false, false, true, "Junior"),
 (3, true, true, true, true, "Senior"),
 (2, false, true, true, false, "Middle"),
@@ -19,6 +19,7 @@ insert into projects (name_of_project, description) values
 ("demand forecast" , "anylize of market"),
 ("HR app", "app for HR department")
 ;
+
 
 insert into project_developer values
 (1,3),
@@ -43,10 +44,17 @@ insert into customers(name_of_customer, adress) values
 ("RDW", "Regensbur")
 ;
 
-insert into company_customer_project values
-(2,3,1),
-(1,2,2),
-(3,2,3),
-(2,3,4)
+insert into customer_project values
+(3,1),
+(2,2),
+(2,3),
+(3,4)
+;
+
+insert into company_project values
+(2,1),
+(1,2),
+(3,3),
+(2,4)
 ;
 

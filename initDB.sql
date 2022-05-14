@@ -10,13 +10,14 @@ primary key (id)
 );
 
 CREATE TABLE skills(
+id_skills bigint NOT NULL AUTO_INCREMENT,
 id_developer bigint NOT NULL ,
 java bool NOT NULL, 
 c_plus_plus bool NOT NULL, 
 c_sharp bool NOT NULL, 
 js bool NOT NULL, 
-levelOfPosition ENUM("Junior", "Middle", "Senior") NOT NULL,
-primary key (id_developer),
+levelOfPosition varchar(30) NOT NULL,
+primary key (id_skills),
 FOREIGN KEY (id_developer) REFERENCES developers(id)
 );
 
@@ -49,12 +50,20 @@ adress varchar(100),
 primary key (id_customer)
 );
 
-CREATE TABLE company_customer_project (
-    id_company bigint NOT NULL,
+
+CREATE TABLE customer_project (
     id_customer bigint NOT NULL,
     id_project bigint NOT NULL,
-    primary key (id_company, id_customer, id_project),
-    FOREIGN KEY (id_company) REFERENCES companies(id_company),
+    primary key (id_customer, id_project),
     FOREIGN KEY (id_project) REFERENCES projects(id_project),
     FOREIGN KEY(id_customer) REFERENCES customers(id_customer)
+);
+
+
+CREATE TABLE company_project (
+    id_company bigint NOT NULL,
+    id_project bigint NOT NULL,
+    primary key (id_company, id_project),
+    FOREIGN KEY (id_company) REFERENCES companies(id_company),
+    FOREIGN KEY (id_project) REFERENCES projects(id_project)
 );
