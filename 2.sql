@@ -1,19 +1,19 @@
-	create table  res
-    select project_developer.id_project as id_pr, developers.salery as sum
+	   
+	select project_developer.id_project as id_pr, developers.salery as sum
 	from developers 
-	inner join project_developer on developers.id = project_developer.id_developer 
+    join project_developer on developers.id = project_developer.id_developer 
 	group by id_pr
-	order by count(sum) 
-    ;
-
-	select id_pr, sum
-    from res 
 	having sum = (
-		select max(sum) as max_cost
-		from res            
+		select max(sum1) as max_cost
+		from (  
+			select project_developer.id_project as id_pr1, developers.salery as sum1
+			from developers 
+			join project_developer on developers.id = project_developer.id_developer 
+			group by id_pr1
+			order by count(sum1) 
+    ) as a
 	);
     
-	drop table res;
     
    
    
